@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import ProductCard from "./ProductCard";
 import Navbar from "./Navbar";
+import { themeStore } from "../../common/Store";
+import { useStore } from "zustand";
 
 const Products = () => {
   const [pageSize, setPageSize] = useState(10);
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+const {theme,toggle}=useStore(themeStore)
   const getProductData = async () => {
     try
     {
@@ -30,7 +32,8 @@ const Products = () => {
   return (
     <>
       {/* <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
-      <Navbar  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+    <div  className={`w-full h-full ${theme === "light" ? "bg-white" : "bg-gray-600"}`}>
+    <Navbar  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <div className="grid grid-cols-3 gap-5 p-7">
         {products?.map((product) => (
           <ProductCard  key={product.id} product={product} />
@@ -47,6 +50,7 @@ const Products = () => {
           View more
         </button>
      </div>
+    </div>
     </>
   );
 };

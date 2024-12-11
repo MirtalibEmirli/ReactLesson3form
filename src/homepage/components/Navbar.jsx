@@ -2,7 +2,11 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useStore } from "zustand";
+import { themeStore } from "../../common/Store";
 const Navbar = ({ searchTerm, setSearchTerm }) => {
+  const {theme,toggle}=useStore(themeStore)
+
   return (
     <div className="px-4 py-2 flex gap-5 items-center justify-between   ">
      <div>
@@ -14,6 +18,10 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
      </div>
      
      <div className="px-4 py-2 flex gap-5 items-center justify-end   "> <a href="#">Home</a>
+     <button onClick={() => {
+                toggle()
+                // setTheme(prevState => prevState === "light" ? "dark" : "light")
+            }}>{theme === "light" ? "Activate dark theme" : "Activate light theme"}</button>
       <a href="#">Contact</a>
       <a href="#">About</a>
       <a href="#">Bonus</a>

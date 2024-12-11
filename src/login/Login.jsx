@@ -1,7 +1,10 @@
 import React, { act } from "react";
 import Form from "../common/form";
-
+import { useContext } from "react";
+import { useStore } from "zustand";
+import {themeStore} from "../common/Store"
 const Login = () => {
+  const {theme,toggle}=useStore(themeStore)
   const formItems = [
     {
       name: "email",
@@ -16,6 +19,7 @@ const Login = () => {
       placeholder: "Enter a pssword here",
     },
   ];
+  
   const buttons = [
     {
       title: "Login",
@@ -34,7 +38,9 @@ const Login = () => {
   ];
   
   return (
-    <Form formItems={formItems} buttons={buttons}  />
+    <div className={`w-full h-screen ${theme==='light' ? 'bg-white':'bg-zinc-400'}`}>
+      <Form formItems={formItems} buttons={buttons}  />
+    </div>
   )
 };
 

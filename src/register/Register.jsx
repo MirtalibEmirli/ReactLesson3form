@@ -1,6 +1,10 @@
 import React from 'react'
 import Form from '../common/form'
+import { useStore } from 'zustand'
+import {themeStore} from"../common/Store"
+
 const Register = () => {
+  const {theme,toggle}=useStore(themeStore)
   const formItems =[{
     name:"firstname",
     label:"Firstname",
@@ -37,7 +41,7 @@ const buttons = [
 },
 ]
   return (
-    <Form formItems={formItems} buttons={buttons}/>
+   <div className={`w-full h-screen  ${theme==="light"?"bg-wh1ite":"bg-black"}`}> <Form formItems={formItems} buttons={buttons}/></div>
   )
 }
 

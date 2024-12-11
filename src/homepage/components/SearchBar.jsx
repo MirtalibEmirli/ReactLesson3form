@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from "react";
+import {useStore} from "zustand"
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
