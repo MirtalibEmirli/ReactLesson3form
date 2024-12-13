@@ -12,7 +12,7 @@ export const themeStore = create(
         })),
     }),
     {
-      name: 'theme-storage', // persist üçün localStorage adı
+      name: 'theme-storage',                                                                              
     }
   )
 );
